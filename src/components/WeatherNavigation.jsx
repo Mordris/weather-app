@@ -10,15 +10,14 @@ const WeatherNavigation = ({
   selectedDateIndex,
   length,
 }) => {
-  // Determine button styles based on whether they are disabled or not
   const prevButtonStyles =
     selectedDateIndex === 0
-      ? { opacity: 0.5, cursor: "not-allowed" } // Fade and disable cursor for the previous button
+      ? { opacity: 0.5, cursor: "not-allowed" }
       : {};
 
   const nextButtonStyles =
     selectedDateIndex >= length - 1
-      ? { opacity: 0.5, cursor: "not-allowed" } // Fade and disable cursor for the next button
+      ? { opacity: 0.5, cursor: "not-allowed" }
       : {};
 
   return (
@@ -29,8 +28,8 @@ const WeatherNavigation = ({
         transition={{ duration: 0.3, ease: "easeInOut" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="shake" // Apply shake class for vibration effect
-        style={prevButtonStyles} // Apply styles based on button state
+        className="shake"
+        style={prevButtonStyles}
       >
         Previous Day
       </MotionButton>
@@ -40,8 +39,8 @@ const WeatherNavigation = ({
         transition={{ duration: 0.3, ease: "easeInOut" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="shake" // Apply shake class for vibration effect
-        style={nextButtonStyles} // Apply styles based on button state
+        className="shake"
+        style={nextButtonStyles}
       >
         Next Day
       </MotionButton>

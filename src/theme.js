@@ -23,7 +23,6 @@ const theme = extendTheme({
         },
       },
     },
-    // Add other component styles as needed
   },
 });
 

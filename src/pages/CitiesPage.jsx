@@ -36,12 +36,26 @@ const CitiesPage = () => {
     setCities(updatedCities);
     localStorage.setItem("cities", JSON.stringify(updatedCities));
     setNewCity("");
+    toast({
+      title: "City Added",
+      description: `"${newCity.trim()}" has been added to your saved cities.`,
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const handleRemoveCity = (cityToRemove) => {
     const updatedCities = cities.filter((city) => city !== cityToRemove);
     setCities(updatedCities);
     localStorage.setItem("cities", JSON.stringify(updatedCities));
+    toast({
+      title: "City Removed",
+      description: `"${cityToRemove}" has been removed from your saved cities.`,
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const handleCityClick = (city) => {

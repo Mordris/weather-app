@@ -5,7 +5,7 @@ const Footer = () => {
   const textSize = useBreakpointValue({ base: "sm", md: "md" });
 
   return (
-    <Box as="footer" bg="brand.100" color="brand.300" py={4} px={6}>
+    <Box as="footer" bg="brand.300" color="white" py={4} px={6}>
       <Text textAlign="center" fontSize={textSize}>
         © {new Date().getFullYear()} WeatherApp. All rights reserved.
       </Text>

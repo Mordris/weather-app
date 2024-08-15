@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import AppBar from "./AppBar"; // Ensure these components are correctly implemented
+import AppBar from "./AppBar";
 import Footer from "./Footer";
 
 const MainLayout = ({ children }) => {

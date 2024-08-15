@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text, VStack, useBreakpointValue } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../index.css"; // Ensure this path is correct
+import "../index.css";
 
 const MotionBox = motion(Box);
 
@@ -17,9 +17,9 @@ const DailyWeatherCard = ({ weather, selectedDateIndex }) => {
       <AnimatePresence>
         <MotionBox
           key={currentDate}
-          initial={{ opacity: 0 }} // Fade in from transparent
-          animate={{ opacity: 1 }} // Fade in to fully opaque
-          exit={{ opacity: 0 }} // Fade out to transparent
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="shake" // Apply shake class for vibration effect
           boxShadow="lg"

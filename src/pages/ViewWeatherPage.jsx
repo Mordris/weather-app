@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  Box,
-  VStack,
-  useToast,
-  Spinner,
-  Text,
-  Input,
-  Button,
-} from "@chakra-ui/react";
+import { Box, VStack, useToast, Spinner, Text } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import CurrentWeatherCard from "../components/CurrentWeatherCard";
 import DailyWeatherCard from "../components/DailyWeatherCard";
 import WeatherNavigation from "../components/WeatherNavigation";
+import SearchBar from "../components/SearchBar";
 import { fetchWeather, fetchCoordinates } from "../utils/api";
 
 const ViewWeatherPage = () => {
@@ -21,63 +14,51 @@ const ViewWeatherPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [debouncedRegionInput, setDebouncedRegionInput] = useState(regionInput);
+  const [initialFetchDone, setInitialFetchDone] = useState(false);
   const toast = useToast();
   const location = useLocation();
 
-  const handleSearch = useCallback(async () => {
-    const searchInput = String(regionInput).trim();
+  const handleSearch = useCallback(
+    async (input) => {
+      const searchInput = String(input).trim();
 
-    if (searchInput) {
-      setLoading(true);
-      setError(null);
-      try {
-        const coords = await fetchCoordinates(searchInput);
-        if (coords) {
-          const { lat, lon } = coords;
-          const weatherData = await fetchWeather(lat, lon);
-          if (weatherData) {
-            setWeather(weatherData);
-            setSelectedDateIndex(0);
+      if (searchInput) {
+        setLoading(true);
+        setError(null);
+        try {
+          const coords = await fetchCoordinates(searchInput);
+          if (coords) {
+            const { lat, lon } = coords;
+            const weatherData = await fetchWeather(lat, lon);
+            if (weatherData) {
+              setWeather(weatherData);
+              setSelectedDateIndex(0);
+            }
           }
+        } catch (error) {
+          setError(error.message);
+          toast({
+            title: "Error",
+            description: error.message,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        setError(error.message);
+      } else {
         toast({
-          title: "Error",
-          description: error.message,
+          title: "Input Error",
+          description: "Please enter a city name.",
           status: "error",
           duration: 3000,
           isClosable: true,
         });
-      } finally {
-        setLoading(false);
       }
-    } else {
-      toast({
-        title: "Input Error",
-        description: "Please enter a city name.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  }, [regionInput, toast]);
-
-  useEffect(() => {
-    const cityFromStorage = JSON.parse(localStorage.getItem("selectedCity"));
-    if (cityFromStorage) {
-      setRegionInput(cityFromStorage);
-      localStorage.removeItem("selectedCity");
-    } else if (location.state?.city) {
-      setRegionInput(location.state.city);
-    }
-  }, [location.state?.city]);
-
-  useEffect(() => {
-    if (regionInput) {
-      handleSearch();
-    }
-  }, [regionInput, handleSearch]);
+    },
+    [toast]
+  );
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -88,6 +69,26 @@ const ViewWeatherPage = () => {
       clearTimeout(handler);
     };
   }, [regionInput]);
+
+  useEffect(() => {
+    if (!initialFetchDone) {
+      const cityFromStorage = JSON.parse(localStorage.getItem("selectedCity"));
+      const city = cityFromStorage || location.state?.city;
+
+      if (city) {
+        setRegionInput(city);
+        handleSearch(city);
+        setInitialFetchDone(true);
+        if (cityFromStorage) localStorage.removeItem("selectedCity");
+      }
+    }
+  }, [handleSearch, location.state?.city, initialFetchDone]);
+
+  useEffect(() => {
+    if (debouncedRegionInput && !initialFetchDone) {
+      handleSearch(debouncedRegionInput);
+    }
+  }, [debouncedRegionInput, handleSearch, initialFetchDone]);
 
   const handleDayChange = (increment) => {
     setSelectedDateIndex((prevIndex) =>
@@ -100,15 +101,11 @@ const ViewWeatherPage = () => {
 
   return (
     <Box p={4} bg="brand.100" minHeight="100vh">
-      <Box textAlign="center" mb={6}>
-        <Input
-          value={regionInput}
-          onChange={(e) => setRegionInput(e.target.value)}
-          placeholder="Enter city name"
-          mb={2}
-        />
-        <Button onClick={handleSearch}>Search</Button>
-      </Box>
+      <SearchBar
+        regionInput={regionInput}
+        setRegionInput={setRegionInput}
+        handleSearch={handleSearch}
+      />
       {loading ? (
         <VStack spacing={4} align="center">
           <Spinner size="xl" />

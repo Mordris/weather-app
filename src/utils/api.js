@@ -6,7 +6,7 @@ export const fetchWeather = async (lat, lon) => {
     const response = await axios.get(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,pressure_msl,precipitation,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours&timezone=auto`
     );
-    console.log(response.data); // Debugging: Log the API response
+    //console.log(response.data); // Debugging: Log the API response
     return response.data;
   } catch (error) {
     console.error("Error fetching weather data:", error);

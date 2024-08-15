@@ -18,6 +18,7 @@ const CurrentWeatherCard = ({ weather }) => {
     <MotionCard
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
       boxShadow="lg"
       p={6}
@@ -46,6 +47,18 @@ const CurrentWeatherCard = ({ weather }) => {
               Precipitation:{" "}
               <Text as="span" fontWeight="bold" fontSize="xl">
                 {weather.current.precipitation} mm
+              </Text>
+            </Text>
+            <Text fontSize="lg">
+              Relative Humidity:{" "}
+              <Text as="span" fontWeight="bold" fontSize="xl">
+                {weather.current.relative_humidity_2m}%
+              </Text>
+            </Text>
+            <Text fontSize="lg">
+              Sea-Level Pressure:{" "}
+              <Text as="span" fontWeight="bold" fontSize="xl">
+                {weather.current.pressure_msl} hPa
               </Text>
             </Text>
           </Box>

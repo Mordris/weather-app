@@ -26,7 +26,6 @@ const CitiesPage = () => {
   const toast = useToast();
 
   useEffect(() => {
-    // Load cities from localStorage
     const savedCities = JSON.parse(localStorage.getItem("cities")) || [];
     setCities(savedCities);
   }, []);
@@ -46,8 +45,10 @@ const CitiesPage = () => {
   };
 
   const handleCityClick = (city) => {
-    // Redirect to home page and search for the clicked city
-    navigate("/", { state: { city } });
+    navigate("/", {
+      state: { city },
+      replace: true,
+    });
   };
 
   return (
@@ -64,6 +65,8 @@ const CitiesPage = () => {
               placeholder="Add a new city"
               fontSize="lg"
               p={4}
+              borderColor="orange.500"
+              _focus={{ borderColor: "orange.600" }}
             />
           </FormControl>
           <MotionButton

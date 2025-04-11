@@ -18,14 +18,21 @@ Here's a glimpse of the WeatherApp in action:
 
 **Main Weather View:**
 <img src="./screenshots/project11-2.png" alt="Main Weather View" width="500"/>
+<br>
 _Displays the current weather conditions and the multi-day forecast for the searched or selected city._
+
+<br>
 
 **Cities Management Page:**
 <img src="./screenshots/project11-1.png" alt="Cities Management Page" width="500"/>
+<br>
 _Allows users to add new favorite cities, view their saved list, and remove cities._
+
+<br>
 
 **Daily Forecast Detail:**
 <img src="./screenshots/project11.png" alt="Daily Forecast Detail" width="500"/>
+<br>
 _Shows detailed weather information for a specific forecast day, navigable using the "Previous/Next Day" buttons._
 
 ## 🚀 Key Features

@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+# WeatherApp ☀️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="public/logo.png" alt="WeatherApp Logo" width="100"/>
+</p>
 
-## Available Scripts
+<p align="center">
+  A sleek, responsive, and feature-rich weather application built with React, Chakra UI, and Framer Motion.
+</p>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+WeatherApp provides current weather conditions and multi-day forecasts for cities worldwide. It leverages the power of the Open-Meteo API for detailed weather data and the Nominatim API for accurate city geocoding. Users can search for any city, view its current weather and daily forecast, and manage a list of their favorite cities for quick access.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Screenshots
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here's a glimpse of the WeatherApp in action:
 
-### `npm test`
+**Main Weather View:**
+![Main Weather View](./screenshots/project11-2.png)
+_Displays the current weather conditions and the multi-day forecast for the searched or selected city._
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Cities Management Page:**
+![Cities Management Page](./screenshots/project11-1.png)
+_Allows users to add new favorite cities, view their saved list, and remove cities._
 
-### `npm run build`
+**Daily Forecast Detail:**
+![Daily Forecast Detail](./screenshots/project11.png)
+_Shows detailed weather information for a specific forecast day, navigable using the "Previous/Next Day" buttons._
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Key Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Global City Search:** Find weather data for any city using the Nominatim API for geocoding.
+- **Current Weather Details:** Displays real-time temperature, wind speed, precipitation, relative humidity, and sea-level pressure.
+- **Daily Forecast:** Provides a multi-day forecast including maximum/minimum temperatures, sunrise/sunset times, maximum UV index, and total daily precipitation.
+- **Forecast Navigation:** Easily browse through forecast days using intuitive "Previous Day" and "Next Day" buttons.
+- **Saved Cities Management:**
+  - Add cities to a personalized list stored locally.
+  - View all saved cities on a dedicated page.
+  - Remove cities from the list with a single click.
+- **Quick Access:** Click on a saved city to instantly load its weather forecast on the main page.
+- **Responsive Design:** Fully responsive layout adapting seamlessly to desktop, tablet, and mobile screens using Chakra UI's responsive utilities.
+- **Engaging UI/UX:**
+  - Smooth page transitions and card animations powered by Framer Motion.
+  - Subtle "shake" animations on interaction for visual feedback.
+  - Loading spinners and informative toast notifications for user actions (add/remove city, errors).
+- **Custom Theming:** Utilizes Chakra UI's theming capabilities with a distinct orange-based brand color palette.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Technology Stack
 
-### `npm run eject`
+- **Frontend Library:** [React.js](https://reactjs.org/)
+- **UI Framework:** [Chakra UI](https://chakra-ui.com/)
+- **Routing:** [React Router DOM](https://reactrouter.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Styling:** CSS-in-JS (via Chakra UI), CSS Modules/Global CSS (`index.css`)
+- **Language:** JavaScript
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ☁️ APIs Used
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Weather Data:** [Open-Meteo API](https://open-meteo.com/) - Provides free, high-resolution weather forecasts.
+- **Geocoding:** [Nominatim API](https://nominatim.openstreetmap.org/) (powered by OpenStreetMap) - Converts city names into geographical coordinates (latitude/longitude).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ⚙️ Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js (v14 or later recommended)
+- npm or yarn package manager
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+1.  **Clone the repository:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    git clone https://github.com/Mordris/weather-app.git # Replace with your repo URL
+    cd weather-app
+    ```
 
-### Analyzing the Bundle Size
+2.  **Install dependencies:**
+    Choose one of the following commands based on your package manager:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```bash
+    npm install
+    ```
 
-### Making a Progressive Web App
+    or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ```bash
+    yarn install
+    ```
 
-### Advanced Configuration
+3.  **Run the development server:**
+    ```bash
+    npm start
+    ```
+    or
+    ```bash
+    yarn start
+    ```
+    This will start the React development server, and the application should automatically open in your default web browser at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Building for Production
 
-### Deployment
+To create an optimized production build:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm run build
+```
 
-### `npm run build` fails to minify
+or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+yarn build
+```
+
+This command bundles the app into static files for production deployment in the build/ directory.
+🧭 Usage
+Search for a City: On the main "Weather" page, enter a city name in the search bar and click the "Search" button.
+View Weather: The current weather conditions and the forecast for the first available day will be displayed.
+Navigate Forecast: Use the "Previous Day" and "Next Day" buttons below the daily forecast card to cycle through the available forecast days.
+Manage Saved Cities:
+Click the "Cities" button in the header/app bar.
+Enter a city name in the input field and click "Add City" to save it to your list.
+To remove a city, click the red 'X' (CloseIcon) button next to its name.
+Clicking on any city name in the list will automatically navigate you back to the "Weather" page and display its forecast.
+
+Enjoy checking the weather with WeatherApp!
